@@ -1,0 +1,17 @@
+.switcher {
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 0.25rem 1rem;
+  background: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.18);
+  margin-left: 12px;
+  text-decoration: none;
+  color: #222;
+  transition: background 0.2s;
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    background: rgba(0,123,255,0.15);
+    color: #007bff;
+  }
+} 

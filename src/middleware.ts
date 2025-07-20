@@ -6,7 +6,7 @@ const PUBLIC_FILE = /\.(.*)$/
 const locales = ['ar', 'en']
 const defaultLocale = 'ar'
 
-// استخراج أفضل لغة من المتصفح
+// Extract the best language from the browser
 function getBestLocale(request: NextRequest): string {
   const header = request.headers.get('accept-language')
   if (!header) return defaultLocale
@@ -19,12 +19,12 @@ function getBestLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // تجاهل ملفات API والـ static
+  // Ignore API and static files
   if (pathname.startsWith('/api') || PUBLIC_FILE.test(pathname)) {
     return NextResponse.next()
   }
 
-  // ✅ لو المسار فيه لغة زي "/ar/login" → سبه
+  // ✅ If the path has a locale like "/ar/login" → let it pass
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   )

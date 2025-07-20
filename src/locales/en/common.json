@@ -1,8 +1,15 @@
 {
-  "login": "Sign In",
-  "signup": "Create Account",
+  "login": "Login",
+  "signup": "Signup",
   "home": {
     "title": "Home Page",
     "welcome": "Welcome to Glasspanel!"
+  },
+  "nav": {
+    "home": "Home",
+    "login": "Login",
+    "signup": "Signup",
+    "dashboard": "Dashboard",
+    "products": "Products"
   }
 }

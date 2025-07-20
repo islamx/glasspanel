@@ -6,6 +6,7 @@ import { locales, type Locale } from '@/lib/i18n'
 import '@/styles/globals.scss'
 import '@/styles/rtl.scss'
 import '@/styles/ltr.scss'
+import GlassNavbar from '@/components/shared/navbar/GlassNavbar';
 
 const cairo = Cairo({
   subsets: ['arabic', 'latin'],
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir} className={cairo.variable}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <GlassNavbar locale={locale} />
           {children}
         </NextIntlClientProvider>
       </body>
