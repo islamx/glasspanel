@@ -1,9 +1,21 @@
 {
   "nav": {
+    "home": "Home",
     "login": "Login",
     "signup": "Signup",
     "dashboard": "Dashboard",
-    "products": "Products"
+    "products": "Products",
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "Home Page",
+    "welcome": "Welcome to Glasspanel!"
+  },
+  "dashboard": {
+    "welcome": "Welcome {name}, you are now logged in."
+  },
+  "products": {
+    "placeholder": "Products page placeholder"
   },
   "email": "Email",
   "password": "Password",

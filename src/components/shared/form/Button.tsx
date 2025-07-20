@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({ children, loading, className = '', type
     onClick={onClick}
   >
     {loading && (
-      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      <span className="spinner-border spinner-border-sm me-2 ms-2" role="status" aria-hidden="true"></span>
     )}
     {children}
   </button>

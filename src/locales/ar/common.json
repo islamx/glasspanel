@@ -1,15 +1,23 @@
 {
-  "login": "تسجيل الدخول",
-  "signup": "التسجيل",
-  "home": {
-    "title": "الصفحة الرئيسية",
-    "welcome": "مرحبًا بك في Glasspane!"
-  },
   "nav": {
     "home": "الرئيسية",
     "login": "دخول",
     "signup": "تسجيل",
     "dashboard": "لوحة التحكم",
-    "products": "المنتجات"
-  }
+    "products": "المنتجات",
+    "logout": "تسجيل الخروج"
+  },
+  "home": {
+    "title": "الصفحة الرئيسية",
+    "welcome": "مرحبًا بك في Glasspanel!"
+  },
+  "dashboard": {
+    "welcome": "مرحبًا {name}، لقد سجلت الدخول بنجاح."
+  },
+  "products": {
+    "placeholder": "صفحة المنتجات (تجريبية)"
+  },
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "remember": "تذكرني"
 }
