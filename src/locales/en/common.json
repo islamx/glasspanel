@@ -1,0 +1,8 @@
+{
+  "login": "Sign In",
+  "signup": "Create Account",
+  "home": {
+    "title": "Home Page",
+    "welcome": "Welcome to Glasspanel!"
+  }
+}
