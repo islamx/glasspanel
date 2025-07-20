@@ -34,7 +34,8 @@ export default async function LocaleLayout({
   }
 
   const dir = locale === 'ar' ? 'rtl' : 'ltr'
-  const messages = (await import(`../../locales/${locale}/common.json`)).default
+  // Import all messages for the current locale from the new index.ts
+  const messages = (await import(`@/locales/${locale}/index.ts`)).default;
 
   return (
     <html lang={locale} dir={dir} className={cairo.variable}>

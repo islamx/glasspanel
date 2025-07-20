@@ -1,0 +1,13 @@
+{
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "remember": "Remember me",
+  "errors": {
+    "email_required": "Email is required",
+    "email_invalid": "Invalid email address",
+    "password_required": "Password is required",
+    "password_short": "Password is too short"
+  },
+  "submit": "Sign in"
+} 

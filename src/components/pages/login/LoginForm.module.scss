@@ -1,0 +1,38 @@
+.container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(162,89,230,0.08);
+  transition: background 0.2s;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+} 
