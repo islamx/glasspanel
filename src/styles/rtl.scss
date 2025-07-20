@@ -1,0 +1,8 @@
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+
+  body {
+    font-family: var(--font-cairo), sans-serif;
+  }
+}
