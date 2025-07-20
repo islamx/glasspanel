@@ -14,7 +14,7 @@ interface GlassNavbarProps {
 }
 
 const GlassNavbar: React.FC<GlassNavbarProps> = ({ locale }) => {
-  const t = useTranslations();
+  const t = useTranslations('common');
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
 
@@ -26,7 +26,7 @@ const GlassNavbar: React.FC<GlassNavbarProps> = ({ locale }) => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.leftLinks}>
-        <span className={styles.brand}>GlassPanel</span>
+        <NavLink href={`/${locale}/`} className={styles.brand}>GlassPanel</NavLink>
         <NavLink href={`/${locale}/dashboard`}>{t('nav.dashboard')}</NavLink>
         <NavLink href={`/${locale}/products`}>{t('nav.products')}</NavLink>
       </div>

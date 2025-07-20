@@ -19,5 +19,6 @@
   },
   "email": "Email",
   "password": "Password",
-  "remember": "Remember me"
+  "remember": "Remember me",
+  "loading": "Loading..."
 }

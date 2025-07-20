@@ -20,6 +20,43 @@
   font-size: 22px;
   text-shadow: 0 2px 8px #ff5fad22;
   margin-right: 18px;
+  background: none !important;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  transition: none;
+  cursor: pointer;
+}
+
+.brand:hover,
+.brand:focus,
+.brand.active {
+  background: none !important;
+  color: #a259e6 !important;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.brandLink {
+  background: none !important;
+  color: #a259e6 !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 22px;
+  text-shadow: 0 2px 8px #ff5fad22;
+  margin-right: 18px;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  transition: none;
+  cursor: pointer;
+}
+
+.brandLink:hover, .brandLink:focus, .brandLink.active {
+  background: none !important;
+  color: #a259e6 !important;
+  box-shadow: none;
+  text-decoration: none;
 }
 
 .leftLinks {

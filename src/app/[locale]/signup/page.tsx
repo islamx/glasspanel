@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 export default function SignUpPage() {
-  const t = useTranslations()
+  const t = useTranslations('common')
 
   return (
     <div className="container mt-5">

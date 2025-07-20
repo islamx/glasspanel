@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react'
 import { NextIntlClientProvider } from 'next-intl'
 import { Cairo } from 'next/font/google'
@@ -7,7 +8,9 @@ import '@/styles/globals.scss'
 import '@/styles/rtl.scss'
 import '@/styles/ltr.scss'
 import GlassNavbar from '@/components/shared/navbar/GlassNavbar';
-import { AuthProvider } from '@/components/shared/AuthContext';
+import { AuthProvider, useAuth } from '@/components/shared/AuthContext';
+import Loader from '@/components/shared/Loader/Loader';
+import AuthGate from '@/components/shared/AuthGate';
 
 const cairo = Cairo({
   subsets: ['arabic', 'latin'],
@@ -43,8 +46,10 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AuthProvider>
-            <GlassNavbar locale={locale} />
-            {children}
+            <AuthGate>
+              <GlassNavbar locale={locale} />
+              {children}
+            </AuthGate>
           </AuthProvider>
         </NextIntlClientProvider>
       </body>

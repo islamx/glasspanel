@@ -5,7 +5,7 @@ import styles from "./Products.module.scss";
 
 export default function ProductsPage() {
   const { user } = useProtectedRoute();
-  const t = useTranslations();
+  const t = useTranslations('common');
 
   if (!user) return <div className={styles.loading}>Loading...</div>;
 
