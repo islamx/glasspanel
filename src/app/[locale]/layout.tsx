@@ -12,6 +12,7 @@ import { AuthProvider, useAuth } from '@/components/shared/AuthContext';
 import Loader from '@/components/shared/Loader/Loader';
 import AuthGate from '@/components/shared/AuthGate';
 import CookieBannerWrapper from '@/components/shared/CookieBanner/CookieBannerWrapper';
+import Footer from '@/components/shared/Footer';
 import { Toaster } from 'react-hot-toast';
 
 const cairo = Cairo({
@@ -85,6 +86,7 @@ export default async function LocaleLayout({
             <AuthGate>
               <GlassNavbar locale={locale} />
               {children}
+              <Footer locale={locale} />
               <CookieBannerWrapper locale={locale} />
               <Toaster 
                 position={locale === 'ar' ? "top-left" : "top-right"}

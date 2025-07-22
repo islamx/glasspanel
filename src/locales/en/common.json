@@ -32,5 +32,24 @@
     "message": "We use cookies on our website to see how you interact with it. By accepting, you agree to our use of such cookies.",
     "accept": "Accept All",
     "decline": "Reject All"
+  },
+  "footer": {
+    "whatWeDo": "What We Do",
+    "description": "GlassPanel is a modern web application that demonstrates advanced frontend development techniques with a beautiful glassmorphism design.",
+    "features": "Key Features",
+    "feature1": "Modern Glassmorphism UI Design",
+    "feature2": "Bilingual Support (English/Arabic)",
+    "feature3": "User Authentication System",
+    "feature4": "Product Management System",
+    "feature5": "Responsive Design",
+    "feature6": "Real-time User Feedback",
+    "technologies": "Technologies Used",
+    "tech1": "Next.js 14 with App Router",
+    "tech2": "React with TypeScript",
+    "tech3": "SCSS Modules & Glassmorphism",
+    "tech4": "PocketBase Backend",
+    "designedBy": "Designed and developed with",
+    "by": "By",
+    "developerName": "islamz"
   }
 }
