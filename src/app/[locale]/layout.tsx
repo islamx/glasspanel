@@ -7,6 +7,7 @@ import { locales, type Locale } from '@/lib/i18n'
 import '@/styles/globals.scss'
 import '@/styles/rtl.scss'
 import '@/styles/ltr.scss'
+import 'bootstrap/scss/bootstrap.scss'
 import GlassNavbar from '@/components/shared/navbar/GlassNavbar';
 import { AuthProvider } from '@/components/shared/AuthContext';
 import AuthGate from '@/components/shared/AuthGate';

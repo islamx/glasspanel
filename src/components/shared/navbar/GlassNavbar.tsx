@@ -7,7 +7,7 @@ import styles from './GlassNavbar.module.scss';
 import { useTranslations } from 'next-intl';
 import { CiLogout } from 'react-icons/ci';
 import { useAuth } from '../AuthContext';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Overlay, Tooltip } from 'react-bootstrap';
 
 interface GlassNavbarProps {
@@ -18,6 +18,7 @@ const GlassNavbar: React.FC<GlassNavbarProps> = ({ locale }) => {
   const t = useTranslations('common');
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const [showTooltip, setShowTooltip] = useState(false);
   const logoutBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -26,19 +27,33 @@ const GlassNavbar: React.FC<GlassNavbarProps> = ({ locale }) => {
     router.push(`/${locale}/login`);
   };
 
+  // Helper function to check if a link is active
+  const isActive = (href: string) => {
+    if (href === `/${locale}/` || href === `/${locale}`) {
+      return pathname === `/${locale}` || pathname === `/${locale}/`;
+    }
+    return pathname === href;
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.leftLinks}>
-        <NavLink href={`/${locale}/`} className={styles.brand}>GlassPanel</NavLink>
-        <NavLink href={`/${locale}`}>{t('nav.dashboard')}</NavLink>
-        <NavLink href={`/${locale}/products`}>{t('nav.products')}</NavLink>
+        <NavLink href={`/${locale}/`} className={styles.brand} active={isActive(`/${locale}/`)}>GlassPanel</NavLink>
+        <NavLink href={`/${locale}`} active={isActive(`/${locale}`)}>{t('nav.dashboard')}</NavLink>
+        <NavLink href={`/${locale}/products`} active={isActive(`/${locale}/products`)}>{t('nav.products')}</NavLink>
       </div>
       <div className={styles.rightLinks}>
         {!isLoggedIn && [
-          { key: 'login', label: t('nav.login') },
-          { key: 'signup', label: t('nav.signup') }
+          { key: 'login', label: t('nav.login'), href: `/${locale}/login` },
+          { key: 'signup', label: t('nav.signup'), href: `/${locale}/signup` }
         ].map(link => (
-          <NavLink key={link.key} href={`/${locale}/${link.key}`}>{link.label}</NavLink>
+          <NavLink 
+            key={link.key} 
+            href={link.href}
+            active={isActive(link.href)}
+          >
+            {link.label}
+          </NavLink>
         ))}
         {isLoggedIn && (
           <>

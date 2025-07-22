@@ -23,6 +23,8 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   if (totalPages <= 1) return null;
 
+
+
   // Generate page items for React Bootstrap Pagination
   const getPageItems = () => {
     const items = [];
@@ -53,6 +55,7 @@ const Pagination: React.FC<PaginationProps> = ({
       items.push(
         <BootstrapPagination.Item
           key={1}
+          active={1 === currentPage}
           onClick={() => onPageChange(1)}
           aria-label="Go to page 1"
         >
@@ -69,13 +72,14 @@ const Pagination: React.FC<PaginationProps> = ({
 
     // Page numbers
     for (let page = startPage; page <= endPage; page++) {
+      const isActive = page === currentPage;
       items.push(
         <BootstrapPagination.Item
           key={page}
-          active={page === currentPage}
+          active={isActive}
           onClick={() => onPageChange(page)}
           aria-label={`Go to page ${page}`}
-          aria-current={page === currentPage ? 'page' : undefined}
+          aria-current={isActive ? 'page' : undefined}
         >
           {page}
         </BootstrapPagination.Item>
@@ -93,6 +97,7 @@ const Pagination: React.FC<PaginationProps> = ({
       items.push(
         <BootstrapPagination.Item
           key={totalPages}
+          active={totalPages === currentPage}
           onClick={() => onPageChange(totalPages)}
           aria-label={`Go to page ${totalPages}`}
         >

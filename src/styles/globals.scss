@@ -24,11 +24,11 @@
       text-decoration: none !important;
       
       &:hover {
-        background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%) !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
         color: #fff !important;
-        box-shadow: 0 4px 16px rgba(255,95,173,0.12) !important;
-        transform: translateY(-1px) !important;
-        border-color: rgba(255,255,255,0.3) !important;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+        transform: translateY(-2px) !important;
+        border-color: transparent !important;
       }
       
       &:focus {
@@ -41,18 +41,34 @@
       }
       
       &.active {
-        background: linear-gradient(90deg, #ff5fad 0%, #a259e6 100%) !important;
-        border-color: rgba(255,255,255,0.3) !important;
-        color: #ffe066 !important;
-        box-shadow: 0 4px 16px rgba(255,95,173,0.12) !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        border-color: transparent !important;
+        color: #fff !important;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
         font-weight: 600 !important;
         
         &:hover {
-          background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%) !important;
-          color: #ffe066 !important;
-          transform: translateY(-1px) !important;
-          box-shadow: 0 6px 20px rgba(255,95,173,0.15) !important;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          color: #fff !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5) !important;
         }
+      }
+    }
+    
+    // Force active styles for Bootstrap pagination
+    &.active .page-link {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      border-color: transparent !important;
+      color: #fff !important;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+      font-weight: 600 !important;
+      
+      &:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        color: #fff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5) !important;
       }
     }
     
