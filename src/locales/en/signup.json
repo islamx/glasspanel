@@ -1,0 +1,48 @@
+{
+  "signup": "Sign Up",
+  "name": "Full Name",
+  "name_placeholder": "Enter your full name",
+  "mobile": "Mobile Number",
+  "mobile_placeholder": "+1234567890",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "acceptTerms": "I accept the terms and conditions",
+  "submit": "Create Account",
+  "errors": {
+    "name_required": "Full name is required",
+    "name_short": "Name must be at least 2 characters",
+    "name_long": "Name must be less than 50 characters",
+    "mobile_required": "Mobile number is required",
+    "mobile_invalid": "Please enter a valid mobile number",
+    "mobile_short": "Mobile number is too short",
+    "mobile_long": "Mobile number is too long",
+    "gender_required": "Please select your gender",
+    "gender_invalid": "Please select a valid gender",
+    "email_required": "Email is required",
+    "email_invalid": "Please enter a valid email address",
+    "password_required": "Password is required",
+    "password_short": "Password must be at least 8 characters",
+    "password_weak": "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+    "confirmPassword_required": "Please confirm your password",
+    "password_mismatch": "Passwords do not match",
+    "terms_required": "You must accept the terms and conditions",
+    "signup_failed": "Signup failed. Please try again."
+  },
+  "success": {
+    "signup_successful": "Account created successfully! Redirecting to login..."
+  },
+  "toast": {
+    "loading": "Creating account...",
+    "success": "Account created successfully! Redirecting...",
+    "error": "Failed to create account. Please try again.",
+    "Failed to create record": "Failed to create account. Please try again.",
+    "validation_error": "Please check the entered data.",
+    "general_error": "An error occurred. Please try again.",
+    "email_invalid": "The email is invalid or already in use.",
+    "mobile_invalid": "The mobile number is invalid or already in use."
+  }
+} 

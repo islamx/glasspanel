@@ -1,1 +1,15 @@
 @import 'bootstrap/scss/bootstrap';
+
+// Toast positioning for RTL
+[dir="rtl"] div[data-sonner-toaster] {
+  left: 20px !important;
+  right: auto !important;
+}
+
+// Toast positioning for LTR
+[dir="ltr"] div[data-sonner-toaster] {
+  right: 20px !important;
+  left: auto !important;
+}
+
+

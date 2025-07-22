@@ -10,29 +10,79 @@ import { useTranslations } from 'next-intl';
 import styles from './LoginForm.module.scss';
 import { getLoginValidationSchema } from './loginValidation';
 import { useAuth } from '@/components/shared/AuthContext';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRouter, useSearchParams, useParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const LoginForm = () => {
   const t = useTranslations('login');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const params = useParams();
+  const locale = params.locale as string;
   const { login } = useAuth();
   const [error, setError] = useState<string | null>(null);
+  const [infoMessage, setInfoMessage] = useState<string | null>(null);
+
+  // Fallback: Get locale from current URL if params.locale is not available
+  const getCurrentLocale = () => {
+    if (locale && ['ar', 'en'].includes(locale)) {
+      return locale;
+    }
+    // Fallback to checking the current pathname
+    const pathname = window.location.pathname;
+    if (pathname.startsWith('/ar/')) return 'ar';
+    if (pathname.startsWith('/en/')) return 'en';
+    return 'ar'; // default fallback
+  };
+
+  // Check for signup success message
+  useEffect(() => {
+    const message = searchParams.get('message');
+    if (message === 'signup_success') {
+      setInfoMessage(t('messages.signup_success'));
+    }
+  }, [searchParams, t]);
+
   return (
     <div className={styles.container}>
       <GlassCard>
         <h1 className={styles.title}>{t('login')}</h1>
+        
+        {infoMessage && (
+          <div className={styles.infoMessage}>
+            {infoMessage}
+          </div>
+        )}
+        
         <Formik
           initialValues={{ email: '', password: '', remember: false }}
           validationSchema={getLoginValidationSchema(t)}
           onSubmit={async (values, { setSubmitting }) => {
             setError(null);
             setSubmitting(true);
+            
+            // Show loading toast
+            const loadingToast = toast.loading(t('toast.loading'));
+            
             try {
               await login(values.email, values.password);
-              router.push('/dashboard');
+              
+              // Dismiss loading toast and show success
+              toast.dismiss(loadingToast);
+              toast.success(t('toast.success'));
+              
+              // Redirect to dashboard with same locale
+              const currentLocale = getCurrentLocale();
+              const dashboardUrl = `/${currentLocale}/dashboard`;
+              window.location.href = dashboardUrl;
             } catch (err: any) {
-              setError(t('errors.login_failed') || 'Login failed. Please check your credentials.');
+              // Dismiss loading toast
+              toast.dismiss(loadingToast);
+              
+              const errorMessage = t('toast.error');
+              toast.error(errorMessage);
+              setError(errorMessage);
             }
             setSubmitting(false);
           }}

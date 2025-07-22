@@ -20,5 +20,9 @@
   "email": "Email",
   "password": "Password",
   "remember": "Remember me",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "toast": {
+    "general_error": "An error occurred. Please try again.",
+    "network_error": "Network error. Please check your internet connection."
+  }
 }

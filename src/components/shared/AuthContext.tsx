@@ -8,6 +8,7 @@ interface AuthContextType {
   isLoggedIn: boolean;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  signup: (userData: any) => Promise<any>;
   logout: () => void;
 }
 
@@ -42,6 +43,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(false);
   };
 
+  const signup = async (userData: any) => {
+    setLoading(true);
+    // Create user without verified field (will be handled by server rules)
+    const user = await pb.collection('users').create(userData);
+    setLoading(false);
+    return user;
+  };
+
   const logout = () => {
     setLoading(true);
     pb.authStore.clear();
@@ -51,7 +60,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, loading, login, signup, logout }}>
       {children}
     </AuthContext.Provider>
   );

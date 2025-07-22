@@ -1,13 +1,7 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import SignupForm from '@/components/pages/signup/SignupForm';
 
-export default function SignUpPage() {
-  const t = useTranslations('common')
-
-  return (
-    <div className="container mt-5">
-      <h1>{t('signup')}</h1>
-    </div>
-  )
+export default function SignupPage() {
+  return <SignupForm />;
 }

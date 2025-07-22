@@ -7,7 +7,19 @@
     "email_required": "Email is required",
     "email_invalid": "Invalid email address",
     "password_required": "Password is required",
-    "password_short": "Password is too short"
+    "password_short": "Password is too short",
+    "login_failed": "Login failed. Please check your credentials."
   },
-  "submit": "Sign in"
+  "submit": "Sign in",
+  "info": {
+    "signup_success": "Registration successful! Please enter your credentials to complete login."
+  },
+  "toast": {
+    "loading": "Signing in...",
+    "success": "Signed in successfully!",
+    "error": "Invalid email or password."
+  },
+  "messages": {
+    "signup_success": "Account created successfully! Please sign in with your credentials."
+  }
 } 

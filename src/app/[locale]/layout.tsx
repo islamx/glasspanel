@@ -11,6 +11,7 @@ import GlassNavbar from '@/components/shared/navbar/GlassNavbar';
 import { AuthProvider, useAuth } from '@/components/shared/AuthContext';
 import Loader from '@/components/shared/Loader/Loader';
 import AuthGate from '@/components/shared/AuthGate';
+import { Toaster } from 'react-hot-toast';
 
 const cairo = Cairo({
   subsets: ['arabic', 'latin'],
@@ -84,6 +85,32 @@ export default async function LocaleLayout({
             <AuthGate>
               <GlassNavbar locale={locale} />
               {children}
+              <Toaster 
+                position={locale === 'ar' ? "top-left" : "top-right"}
+                reverseOrder={locale === 'ar'}
+                toastOptions={{
+                  duration: 4000,
+                  style: {
+                    background: '#363636',
+                    color: '#fff',
+                    direction: locale === 'ar' ? 'rtl' : 'ltr',
+                  },
+                  success: {
+                    duration: 3000,
+                    iconTheme: {
+                      primary: '#10b981',
+                      secondary: '#fff',
+                    },
+                  },
+                  error: {
+                    duration: 4000,
+                    iconTheme: {
+                      primary: '#ef4444',
+                      secondary: '#fff',
+                    },
+                  },
+                }}
+              />
             </AuthGate>
           </AuthProvider>
         </NextIntlClientProvider>
