@@ -3,31 +3,51 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import pb from '@/lib/pb';
 
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  username?: string;
+  mobile: string;
+  gender: string;
+  created: string;
+  updated: string;
+}
+
+interface UserData {
+  name: string;
+  mobile: string;
+  gender: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 interface AuthContextType {
-  user: any;
+  user: User | null;
   isLoggedIn: boolean;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  signup: (userData: any) => Promise<any>;
+  signup: (userData: UserData) => Promise<User>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<any>(pb.authStore.model);
+  const [user, setUser] = useState<User | null>(pb.authStore.model as User | null);
   const [isLoggedIn, setIsLoggedIn] = useState(pb.authStore.isValid);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Set initial state
-    setUser(pb.authStore.model);
+    setUser(pb.authStore.model as User | null);
     setIsLoggedIn(pb.authStore.isValid);
     setLoading(false);
 
     // Listen for auth changes
     const unsubscribe = pb.authStore.onChange(() => {
-      setUser(pb.authStore.model);
+      setUser(pb.authStore.model as User | null);
       setIsLoggedIn(pb.authStore.isValid);
       setLoading(false);
     });
@@ -40,18 +60,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = async (email: string, password: string) => {
     try {
       await pb.collection('users').authWithPassword(email, password);
-      setUser(pb.authStore.model);
+      setUser(pb.authStore.model as User | null);
       setIsLoggedIn(pb.authStore.isValid);
     } catch (error) {
       throw error;
     }
   };
 
-  const signup = async (userData: any) => {
+  const signup = async (userData: UserData) => {
     setLoading(true);
     try {
       const user = await pb.collection('users').create(userData);
-      return user;
+      return user as unknown as User;
     } finally {
       setLoading(false);
     }

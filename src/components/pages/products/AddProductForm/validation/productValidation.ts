@@ -36,11 +36,13 @@ export const productValidationSchema = Yup.object({
     .nullable()
     .test('fileSize', 'File size must be less than 5MB', (value) => {
       if (!value) return true; // Allow null/empty
-      return value.size <= 5 * 1024 * 1024; // 5MB
+      const file = value as File;
+      return file.size <= 5 * 1024 * 1024; // 5MB
     })
     .test('fileType', 'Only image files are allowed', (value) => {
       if (!value) return true; // Allow null/empty
-      return ['image/jpeg', 'image/png', 'image/webp'].includes(value.type);
+      const file = value as File;
+      return ['image/jpeg', 'image/png', 'image/webp'].includes(file.type);
     })
 });
 

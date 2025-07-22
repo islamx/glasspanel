@@ -1,19 +1,23 @@
 import React from 'react';
 import styles from './DataTable.module.scss';
 
-interface Column {
+interface Column<T = unknown> {
   key: string;
   label: string;
-  render?: (value: any, row: any) => React.ReactNode;
+  render?: (value: unknown, row: T) => React.ReactNode;
 }
 
-interface DataTableProps {
-  data: any[];
-  columns: Column[];
+interface DataTableProps<T = unknown> {
+  data: T[];
+  columns: Column<T>[];
   className?: string;
 }
 
-const DataTable: React.FC<DataTableProps> = ({ data, columns, className = "" }) => {
+const DataTable = <T extends Record<string, unknown>>({ 
+  data, 
+  columns, 
+  className = "" 
+}: DataTableProps<T>) => {
   return (
     <div className={`${styles.tableContainer} ${className}`}>
       <div className="table-responsive">
@@ -29,12 +33,12 @@ const DataTable: React.FC<DataTableProps> = ({ data, columns, className = "" }) 
           </thead>
           <tbody>
             {data.map((row, index) => (
-              <tr key={row.id || index}>
+              <tr key={`row-${index}`}>
                 {columns.map((column) => (
                   <td key={column.key}>
                     {column.render 
                       ? column.render(row[column.key], row)
-                      : row[column.key]
+                      : String(row[column.key] || '')
                     }
                   </td>
                 ))}

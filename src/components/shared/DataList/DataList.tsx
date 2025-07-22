@@ -9,15 +9,15 @@ import Loader from '../Loader/Loader';
 import EmptyState from '../EmptyState/EmptyState';
 import styles from './DataList.module.scss';
 
-interface Column {
+export interface Column<T = unknown> {
   key: string;
   label: string;
-  render?: (value: any, row: any) => React.ReactNode;
+  render?: (value: unknown, row: T) => React.ReactNode;
 }
 
-interface DataListProps {
-  data: any[];
-  columns: Column[];
+interface DataListProps<T = unknown> {
+  data: T[];
+  columns: Column<T>[];
   searchTerm: string;
   onSearchChange: (value: string) => void;
   searchPlaceholder?: string;
@@ -36,7 +36,7 @@ interface DataListProps {
   className?: string;
 }
 
-const DataList: React.FC<DataListProps> = ({
+const DataList = <T extends Record<string, unknown>>({
   data,
   columns,
   searchTerm,
@@ -44,7 +44,6 @@ const DataList: React.FC<DataListProps> = ({
   searchPlaceholder = "Search...",
   itemsPerPage = 5,
   loading = false,
-  loadingText = "Loading...",
   previousText = "Previous",
   nextText = "Next",
   showingText = "Showing",
@@ -55,7 +54,7 @@ const DataList: React.FC<DataListProps> = ({
   noSearchResultsTitle = "No Search Results",
   noSearchResultsDescription = "No items match your search criteria.",
   className = ""
-}) => {
+}: DataListProps<T>) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState(data);
 

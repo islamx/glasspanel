@@ -8,8 +8,7 @@ import '@/styles/globals.scss'
 import '@/styles/rtl.scss'
 import '@/styles/ltr.scss'
 import GlassNavbar from '@/components/shared/navbar/GlassNavbar';
-import { AuthProvider, useAuth } from '@/components/shared/AuthContext';
-import Loader from '@/components/shared/Loader/Loader';
+import { AuthProvider } from '@/components/shared/AuthContext';
 import AuthGate from '@/components/shared/AuthGate';
 import CookieBannerWrapper from '@/components/shared/CookieBanner/CookieBannerWrapper';
 import Footer from '@/components/shared/Footer';

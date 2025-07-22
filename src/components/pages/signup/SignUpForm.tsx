@@ -1,28 +1,24 @@
 'use client';
 
+import { useState } from 'react';
 import { Formik, Form } from 'formik';
+import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 import GlassCard from '@/components/shared/GlassCard/GlassCard';
 import TextField from '@/components/shared/form/TextField';
 import PasswordField from '@/components/shared/form/PasswordField';
-import CheckboxField from '@/components/shared/form/CheckboxField';
 import RadioField from '@/components/shared/form/RadioField';
+import CheckboxField from '@/components/shared/form/CheckboxField';
 import Button from '@/components/shared/form/Button';
-import { useTranslations } from 'next-intl';
-import styles from './SignupForm.module.scss';
 import { getSignupValidationSchema } from './signupValidation';
-import { useRouter, useParams } from 'next/navigation';
-import { useState } from 'react';
-import { useAuth } from '@/components/shared/AuthContext';
 import toast from 'react-hot-toast';
+import styles from './SignupForm.module.scss';
 
 const SignupForm = () => {
   const t = useTranslations('signup');
-  const router = useRouter();
   const params = useParams();
   const locale = params.locale as string;
-  const { signup } = useAuth();
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   // Fallback: Get locale from current URL if params.locale is not available
   const getCurrentLocale = () => {
@@ -92,26 +88,26 @@ const SignupForm = () => {
                 // Use window.location for more reliable redirect
                 window.location.href = loginUrl;
               }, 1500);
-            } catch (err: any) {
+            } catch (err: unknown) {
               // Dismiss loading toast
               toast.dismiss(loadingToast);
               
               let errorMessage = t('toast.error');
               
               // Handle different error sources
-              if (err.message) {
+              if (err && typeof err === 'object' && 'message' in err && typeof err.message === 'string') {
                 // Try to translate the error message
                 try {
                   errorMessage = t(`toast.${err.message}`) || t('toast.error');
                 } catch {
                   errorMessage = err.message;
                 }
-              } else if (err.data?.message) {
+              } else if (err && typeof err === 'object' && 'data' in err && err.data && typeof err.data === 'object' && 'message' in err.data) {
                 // Handle PocketBase error messages
                 try {
                   errorMessage = t(`toast.${err.data.message}`) || t('toast.error');
                 } catch {
-                  errorMessage = err.data.message;
+                  errorMessage = err.data.message as string;
                 }
               }
               
@@ -203,7 +199,6 @@ const SignupForm = () => {
               </Button>
               
               {error && <div className={styles.error}>{error}</div>}
-              {success && <div className={styles.success}>{success}</div>}
             </Form>
           )}
         </Formik>

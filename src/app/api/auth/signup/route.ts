@@ -32,14 +32,14 @@ export async function POST(request: NextRequest) {
       user: user 
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     let errorMessage = 'general_error';
     
     // Handle PocketBase specific errors
-    if (error.data?.message) {
-      errorMessage = error.data.message;
-    } else if (error.message) {
-      errorMessage = error.message;
+    if (error && typeof error === 'object' && 'data' in error && error.data && typeof error.data === 'object' && 'message' in error.data) {
+      errorMessage = error.data.message as string;
+    } else if (error && typeof error === 'object' && 'message' in error) {
+      errorMessage = error.message as string;
     }
     
     // Map common PocketBase errors to translation keys

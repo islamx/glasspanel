@@ -7,7 +7,6 @@ import FileField from '@/components/shared/form/FileField';
 import SelectField from '@/components/shared/form/SelectField';
 import Button from '@/components/shared/form/Button';
 import { productValidationSchema, ProductFormData, Category } from '../AddProductForm/validation';
-import pb from '@/lib/pb';
 import styles from './ProductForm.module.scss';
 
 interface ProductFormProps {
@@ -24,14 +23,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
   onSubmit, 
   onCancel, 
   loading = false,
-  locale,
   mode,
-  initialData,
-  productId
+  initialData
 }) => {
   const t = useTranslations('products');
   const [sections, setSections] = useState<Category[]>([]);
-  const [sectionsLoading, setSectionsLoading] = useState(true);
 
   const defaultValues: ProductFormData = {
     name_en: '',
@@ -50,7 +46,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        setSectionsLoading(true);
         // Define the categories that exist in PocketBase
         const predefinedCategories = [
           {
@@ -92,10 +87,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
         } else {
           setSections([]);
         }
-      } catch (error) {
+      } catch {
         setSections([]);
-      } finally {
-        setSectionsLoading(false);
       }
     };
 
@@ -105,8 +98,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const handleSubmit = async (values: ProductFormData) => {
     try {
       await onSubmit(values);
-    } catch (error) {
-      console.error('Form submission error:', error);
+    } catch {
+      console.error('Form submission error');
     }
   };
 
@@ -132,7 +125,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       onSubmit={handleSubmit}
       enableReinitialize={mode === 'edit'}
     >
-      {({ values, setFieldValue, isValid, dirty }) => (
+      {() => (
         <Form className={styles.form}>
           <Row>
             <Col md={6}>
@@ -141,7 +134,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="name_en"
                 type="text"
                 placeholder={t('nameEnPlaceholder')}
-                required
               />
             </Col>
             <Col md={6}>
@@ -150,7 +142,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="name_ar"
                 type="text"
                 placeholder={t('nameArPlaceholder')}
-                required
               />
             </Col>
           </Row>
@@ -162,8 +153,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="category_en"
                 options={getSectionOptions(true)}
                 placeholder={t('categoryEnPlaceholder')}
-                loading={sectionsLoading}
-                required
               />
             </Col>
             <Col md={6}>
@@ -172,8 +161,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="category_ar"
                 options={getSectionOptions(false)}
                 placeholder={t('categoryArPlaceholder')}
-                loading={sectionsLoading}
-                required
               />
             </Col>
           </Row>
@@ -185,9 +172,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="price"
                 type="number"
                 placeholder={t('pricePlaceholder')}
-                required
-                min="0"
-                step="0.01"
               />
             </Col>
             <Col md={6}>
@@ -196,8 +180,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="image"
                 accept="image/*"
                 placeholder={t('imagePlaceholder')}
-                currentFile={values.image}
-                onFileChange={(file) => setFieldValue('image', file)}
               />
             </Col>
           </Row>
@@ -209,7 +191,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="description_en"
                 type="textarea"
                 placeholder={t('descriptionEnPlaceholder')}
-                required
                 rows={4}
               />
             </Col>
@@ -219,7 +200,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 name="description_ar"
                 type="textarea"
                 placeholder={t('descriptionArPlaceholder')}
-                required
                 rows={4}
               />
             </Col>
@@ -230,7 +210,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
               type="button"
               onClick={onCancel}
               className={styles.cancelButton}
-              disabled={loading}
             >
               {t('cancel')}
             </Button>
@@ -238,7 +217,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
               type="submit"
               loading={loading}
               className={styles.submitButton}
-              disabled={!isValid || !dirty}
             >
               {mode === 'create' ? t('addProduct') : t('updateProduct')}
             </Button>

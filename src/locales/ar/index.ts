@@ -3,9 +3,11 @@ import login from './login.json';
 import signup from './signup.json';
 import products from './products.json';
 
-export default {
+const messages = {
   common,
   login,
   signup,
   products,
-}; 
+};
+
+export default messages; 

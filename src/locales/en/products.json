@@ -36,6 +36,8 @@
   "nameArPlaceholder": "Enter product name in Arabic",
   "descriptionEnPlaceholder": "Enter product description in English",
   "descriptionArPlaceholder": "Enter product description in Arabic",
+  "categoryEnPlaceholder": "Select English category",
+  "categoryArPlaceholder": "Select Arabic category",
   "categoryPlaceholder": "Enter category",
   "pricePlaceholder": "Enter price",
   "noData": {

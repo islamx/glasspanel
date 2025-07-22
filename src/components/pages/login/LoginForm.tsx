@@ -75,7 +75,7 @@ const LoginForm = () => {
               // Use router.push for smooth navigation without page refresh
               const currentLocale = getCurrentLocale();
               router.push(`/${currentLocale}`);
-            } catch (err: any) {
+            } catch {
               // Dismiss loading toast
               toast.dismiss(loadingToast);
               

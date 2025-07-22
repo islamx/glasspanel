@@ -11,8 +11,7 @@ function getBestLocale(request: NextRequest): string {
   const header = request.headers.get('accept-language')
   if (!header) return defaultLocale
 
-  const parsed = acceptLanguageParser.parse(header)
-  const bestMatch = acceptLanguageParser.pick(locales, parsed)
+  const bestMatch = acceptLanguageParser.pick(locales, header)
   return bestMatch || defaultLocale
 }
 

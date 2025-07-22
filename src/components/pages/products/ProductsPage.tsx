@@ -13,8 +13,9 @@ import { Overlay, Tooltip } from 'react-bootstrap';
 import ConfirmationDialog from '@/components/shared/ConfirmationDialog';
 import toast from 'react-hot-toast';
 import styles from '@/styles/common.module.scss';
+import { Column } from '@/components/shared/DataList/DataList';
 
-interface Product {
+interface Product extends Record<string, unknown> {
   id: string;
   name_en: string;
   name_ar: string;
@@ -60,8 +61,8 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
         if (isMounted) {
           setProducts(records.items as unknown as Product[]);
         }
-      } catch (error: any) {
-        if (isMounted && error.name !== 'AbortError') {
+      } catch (error: unknown) {
+        if (isMounted && error && typeof error === 'object' && 'name' in error && error.name !== 'AbortError') {
           setProducts([]);
         }
       } finally {
@@ -158,7 +159,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
       
       setShowModal(false);
       setEditingProduct(null);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error saving product:', error);
       toast.error(commonT('toast.general_error'));
       throw error;
@@ -256,7 +257,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
       
       setShowDeleteModal(false);
       setDeletingProduct(null);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error deleting product:', error);
       toast.error(commonT('toast.general_error'));
       throw error;
@@ -270,41 +271,41 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
     setDeletingProduct(null);
   };
 
-  const columns = [
+  const columns: Column<Product>[] = [
     { 
       key: 'image', 
       label: t('image'),
-      render: (value: any, product: Product) => renderImage(product)
+      render: (_value: unknown, product: Product) => renderImage(product)
     },
     { 
       key: 'name', 
       label: t('name'),
-      render: (value: any, product: Product) => getLocalizedValue(product, 'name')
+      render: (_value: unknown, product: Product) => getLocalizedValue(product, 'name')
     },
     { 
       key: 'category', 
       label: t('category'),
-      render: (value: any, product: Product) => getLocalizedCategory(product)
+      render: (_value: unknown, product: Product) => getLocalizedCategory(product)
     },
     { 
       key: 'price', 
       label: t('price'),
-      render: (value: number) => `$${(value || 0).toFixed(2)}`
+      render: (_value: unknown, product: Product) => `$${(product.price || 0).toFixed(2)}`
     },
     { 
       key: 'description', 
       label: t('description'),
-      render: (value: any, product: Product) => getLocalizedValue(product, 'description')
+      render: (_value: unknown, product: Product) => getLocalizedValue(product, 'description')
     },
     { 
       key: 'created', 
       label: t('created'),
-      render: (value: string) => value ? formatDate(value) : ''
+      render: (_value: unknown, product: Product) => product.created ? formatDate(product.created) : ''
     },
     {
       key: 'actions',
       label: t('actions'),
-      render: (value: any, product: Product) => (
+      render: (_value: unknown, product: Product) => (
         <ActionButtonsWithTooltips product={product} />
       )
     }
@@ -323,8 +324,8 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
         </Button>
       </div>
 
-      <DataList
-        data={products} // Pass all products
+      <DataList<Product>
+        data={products}
         columns={columns}
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}

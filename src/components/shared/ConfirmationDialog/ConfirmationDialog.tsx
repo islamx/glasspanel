@@ -80,7 +80,6 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
               type="button"
               onClick={onHide}
               className={styles.cancelButton}
-              disabled={loading}
             >
               {cancelText}
             </Button>

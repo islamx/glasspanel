@@ -5,9 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import TextField from '@/components/shared/form/TextField';
 import FileField from '@/components/shared/form/FileField';
 import SelectField from '@/components/shared/form/SelectField';
-import Button from '@/components/shared/form/Button';
 import { productValidationSchema, ProductFormData, Category } from './validation';
-import pb from '@/lib/pb';
 import styles from './AddProductForm.module.scss';
 
 interface AddProductFormProps {
@@ -18,10 +16,7 @@ interface AddProductFormProps {
 }
 
 const AddProductForm: React.FC<AddProductFormProps> = ({ 
-  onSubmit, 
-  onCancel, 
-  loading = false,
-  locale
+  onSubmit
 }) => {
   const t = useTranslations('products');
   const [sections, setSections] = useState<Category[]>([]);
@@ -84,7 +79,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
         } else {
           setSections([]);
         }
-      } catch (error) {
+      } catch {
         setSections([]);
       } finally {
         setSectionsLoading(false);
@@ -97,7 +92,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
   const handleSubmit = async (values: ProductFormData) => {
     try {
       await onSubmit(values);
-    } catch (error) {
+    } catch {
       // Handle error silently
     }
   };
@@ -132,7 +127,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
       validationSchema={productValidationSchema}
       onSubmit={handleSubmit}
     >
-      {({ isValid, dirty }) => (
+      {() => (
         <Form className={styles.form}>
           <Row>
             <Col md={6}>

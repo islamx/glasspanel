@@ -36,6 +36,8 @@
   "nameArPlaceholder": "أدخل اسم المنتج باللغة العربية",
   "descriptionEnPlaceholder": "أدخل وصف المنتج باللغة الإنجليزية",
   "descriptionArPlaceholder": "أدخل وصف المنتج باللغة العربية",
+  "categoryEnPlaceholder": "اختر الفئة الإنجليزية",
+  "categoryArPlaceholder": "اختر الفئة العربية",
   "categoryPlaceholder": "أدخل الفئة",
   "pricePlaceholder": "أدخل السعر",
   "noData": {

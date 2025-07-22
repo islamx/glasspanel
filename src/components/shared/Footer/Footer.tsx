@@ -8,7 +8,7 @@ interface FooterProps {
   locale: string;
 }
 
-const Footer: React.FC<FooterProps> = ({ locale }) => {
+const Footer: React.FC<FooterProps> = () => {
   const t = useTranslations('common');
 
   return (
