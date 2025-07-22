@@ -15,7 +15,6 @@ export default function ProductsPageWrapper() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>{t('nav.products')}</h1>
       <ProductsPage locale={locale} />
     </div>
   );

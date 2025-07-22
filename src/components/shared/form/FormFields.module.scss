@@ -12,8 +12,10 @@
 }
 .label {
   display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
 }
 
 // RTL label alignment
@@ -22,11 +24,41 @@
 }
 .input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.875rem 1rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #dee2e6;
   font-size: 16px;
   outline: none;
+  resize: vertical;
+  min-height: 42px;
+  background: #fff;
+  color: #2c3e50;
+  transition: all 0.2s ease;
+  
+  &::placeholder {
+    color: #6c757d;
+  }
+  
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  // Textarea specific styling
+  &[as="textarea"] {
+    min-height: 80px;
+    font-family: inherit;
+  }
+  
+  // Select specific styling
+  &[as="select"] {
+    cursor: pointer;
+    
+    option {
+      background: #fff;
+      color: #2c3e50;
+    }
+  }
 }
 
 // RTL input text alignment
@@ -91,8 +123,8 @@
   padding-left: 40px;
 }
 .error {
-  color: #e74c3c;
-  font-size: 13px;
+  color: #dc3545;
+  font-size: 0.875rem;
   margin-top: 4px;
   width: 100%;
 }

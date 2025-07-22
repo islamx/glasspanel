@@ -1,0 +1,129 @@
+.modal {
+  .modal-dialog {
+    max-width: 600px;
+    max-height: 80vh;
+    margin: 10vh auto;
+  }
+}
+
+.modalContent {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-bottom: 1px solid rgb(59 59 59 / 10%);
+  padding: 1.5rem 1.5rem 1rem;
+  
+  .btn-close {
+    filter: invert(1);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.modalTitle {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.modalBody {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  overflow-y: auto;
+  flex: 1;
+  max-height: calc(80vh - 120px); // Subtract header height
+  padding-bottom: 0; // Remove bottom padding to make room for fixed actions
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .modal {
+    .modal-dialog {
+      margin: 10vh 1rem;
+      max-width: calc(100% - 2rem);
+      max-height: 80vh;
+    }
+  }
+  
+  .modalContent {
+    border-radius: 12px;
+  }
+  
+  .modalHeader {
+    padding: 1rem 1rem 0.75rem;
+  }
+  
+  .modalBody {
+    padding: 1rem;
+    max-height: calc(80vh - 100px); // Smaller header on mobile
+    padding-bottom: 0;
+  }
+  
+  .modalTitle {
+    font-size: 1.1rem;
+  }
+}
+
+// Fixed modal actions at bottom
+.modalActions {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 2px solid rgba(255, 255, 255, 0.6);
+  padding: 1rem 1.5rem;
+  margin: 0 -1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  z-index: 10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .modalActions {
+    padding: 0.75rem 1rem;
+    margin: 0 -1rem;
+  }
+}
+
+// Button styles for modal actions
+.modalActions {
+  .btn {
+    min-width: 120px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    
+    &:hover {
+      box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+ 

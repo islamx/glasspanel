@@ -69,7 +69,6 @@ export default async function LocaleLayout({
   const { locale } = await params
 
   if (!locale || !locales.includes(locale)) {
-    console.warn('❗️ Invalid or missing locale:', locale)
     notFound()
   }
 
