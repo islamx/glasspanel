@@ -9,7 +9,7 @@ import ProductForm from './ProductForm';
 import Button from '@/components/shared/form/Button';
 import { ProductFormData } from './AddProductForm/validation';
 import { FiEdit3, FiTrash2 } from 'react-icons/fi';
-import { Overlay, Tooltip } from 'react-bootstrap';
+import { Overlay, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import ConfirmationDialog from '@/components/shared/ConfirmationDialog';
 import toast from 'react-hot-toast';
 import styles from '@/styles/common.module.scss';
@@ -110,6 +110,26 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
   const getLocalizedValue = (product: Product, field: 'name' | 'description') => {
     const fieldName = `${field}_${locale}`;
     return product[fieldName as keyof Product] as string || '';
+  };
+
+  const renderDescription = (product: Product) => {
+    const description = getLocalizedValue(product, 'description');
+    const maxLength = 50; 
+
+    if (description.length <= maxLength) {
+      return description;
+    }
+
+    const truncatedText = `${description.substring(0, maxLength)}...`;
+
+    return (
+      <OverlayTrigger
+        placement="top"
+        overlay={<Tooltip id={`tooltip-${product.id}`}>{description}</Tooltip>}
+      >
+        <span>{truncatedText}</span>
+      </OverlayTrigger>
+    );
   };
 
   const renderImage = (product: Product) => {
@@ -295,7 +315,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
     { 
       key: 'description', 
       label: t('description'),
-      render: (_value: unknown, product: Product) => getLocalizedValue(product, 'description')
+      render: (_value: unknown, product: Product) => renderDescription(product)
     },
     { 
       key: 'created', 

@@ -35,7 +35,7 @@ const DataTable = <T extends Record<string, unknown>>({
             {data.map((row, index) => (
               <tr key={`row-${index}`}>
                 {columns.map((column) => (
-                  <td key={column.key}>
+                  <td key={column.key} className="align-middle">
                     {column.render 
                       ? column.render(row[column.key], row)
                       : String(row[column.key] || '')
