@@ -72,10 +72,9 @@ const LoginForm = () => {
               toast.dismiss(loadingToast);
               toast.success(t('toast.success'));
               
-              // Redirect to dashboard with same locale
+              // Use router.push for smooth navigation without page refresh
               const currentLocale = getCurrentLocale();
-              const dashboardUrl = `/${currentLocale}/dashboard`;
-              window.location.href = dashboardUrl;
+              router.push(`/${currentLocale}/dashboard`);
             } catch (err: any) {
               // Dismiss loading toast
               toast.dismiss(loadingToast);

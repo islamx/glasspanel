@@ -20,43 +20,52 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+    // Set initial state
+    setUser(pb.authStore.model);
+    setIsLoggedIn(pb.authStore.isValid);
+    setLoading(false);
+
+    // Listen for auth changes
     const unsubscribe = pb.authStore.onChange(() => {
       setUser(pb.authStore.model);
       setIsLoggedIn(pb.authStore.isValid);
       setLoading(false);
     });
-    // Initial state
-    setUser(pb.authStore.model);
-    setIsLoggedIn(pb.authStore.isValid);
-    setLoading(false);
+
     return () => {
       unsubscribe();
     };
   }, []);
 
   const login = async (email: string, password: string) => {
-    setLoading(true);
-    await pb.collection('users').authWithPassword(email, password);
-    setUser(pb.authStore.model);
-    setIsLoggedIn(pb.authStore.isValid);
-    setLoading(false);
+    try {
+      await pb.collection('users').authWithPassword(email, password);
+      setUser(pb.authStore.model);
+      setIsLoggedIn(pb.authStore.isValid);
+    } catch (error) {
+      throw error;
+    }
   };
 
   const signup = async (userData: any) => {
     setLoading(true);
-    // Create user without verified field (will be handled by server rules)
-    const user = await pb.collection('users').create(userData);
-    setLoading(false);
-    return user;
+    try {
+      const user = await pb.collection('users').create(userData);
+      return user;
+    } finally {
+      setLoading(false);
+    }
   };
 
   const logout = () => {
     setLoading(true);
-    pb.authStore.clear();
-    setUser(null);
-    setIsLoggedIn(false);
-    setLoading(false);
+    try {
+      pb.authStore.clear();
+      setUser(null);
+      setIsLoggedIn(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

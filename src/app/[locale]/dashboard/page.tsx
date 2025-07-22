@@ -7,7 +7,7 @@ export default function DashboardPage() {
   const { user } = useProtectedRoute();
   const t = useTranslations('common');
 
-  if (!user) return <div className={styles.loading}>Loading...</div>;
+  if (!user) return null;
 
   const displayName = user.name || user.username || user.email;
 
