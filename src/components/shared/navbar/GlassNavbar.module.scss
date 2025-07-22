@@ -90,40 +90,28 @@
 }
 
 .logoutBtn {
-  position: relative;
-  background: linear-gradient(90deg, #ff5fad 0%, #a259e6 100%);
-  color: #fff;
-  border-radius: 8px;
-  padding: 0.5rem 1.2rem;
-  font-weight: 600;
+  background: none;
+  color: #a259e6;
   border: none;
-  box-shadow: 0 2px 8px rgba(255,95,173,0.12);
+  padding: 0.6rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  overflow: hidden;
-}
-.logoutBtn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%);
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
-  pointer-events: none;
-  z-index: 0;
-}
-.logoutBtn:hover::before {
-  opacity: 1;
-}
-.logoutBtn__content {
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
   position: relative;
-  z-index: 1;
-  color: #fff !important;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+}
+
+.logoutBtn:hover {
+  background: rgba(162, 89, 230, 0.15);
+  color: #8b4fd1;
+  transform: scale(1.05);
+}
+
+.logoutBtn:focus {
+  outline: 2px solid rgba(162, 89, 230, 0.3);
+  outline-offset: 2px;
 }
 
 @media (max-width: 600px) {
