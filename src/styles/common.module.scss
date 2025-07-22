@@ -165,6 +165,12 @@
   }
 }
 
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .editButton {
   background: rgba(162, 89, 230, 0.1);
   color: #a259e6;
@@ -187,5 +193,121 @@
   &:focus {
     outline: 2px solid rgba(162, 89, 230, 0.3);
     outline-offset: 2px;
+  }
+}
+
+.deleteButton {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+  }
+  
+  &:focus {
+    outline: 2px solid rgba(239, 68, 68, 0.3);
+    outline-offset: 2px;
+  }
+}
+
+.deleteConfirmation {
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.deleteIcon {
+  color: #ef4444;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.deleteMessage {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.deleteWarning {
+  font-size: 0.875rem;
+  color: #ef4444;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.deleteActions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.cancelDeleteButton {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(162, 89, 230, 0.3);
+  border-radius: 6px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(162, 89, 230, 0.1);
+    border-color: rgba(162, 89, 230, 0.5);
+    transform: translateY(-1px);
+  }
+}
+
+.confirmDeleteButton {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  
+  &:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  }
+}
+
+@media (max-width: 768px) {
+  .actionButtons {
+    gap: 0.25rem;
+  }
+  
+  .editButton,
+  .deleteButton {
+    padding: 0.375rem;
+  }
+  
+  .deleteActions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cancelDeleteButton,
+  .confirmDeleteButton {
+    width: 100%;
+    justify-content: center;
   }
 } 

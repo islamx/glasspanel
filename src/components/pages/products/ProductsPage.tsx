@@ -8,8 +8,9 @@ import Modal from '@/components/shared/Modal';
 import ProductForm from './ProductForm';
 import Button from '@/components/shared/form/Button';
 import { ProductFormData } from './AddProductForm/validation';
-import { FiEdit3 } from 'react-icons/fi';
+import { FiEdit3, FiTrash2 } from 'react-icons/fi';
 import { Overlay, Tooltip } from 'react-bootstrap';
+import ConfirmationDialog from '@/components/shared/ConfirmationDialog';
 import styles from '@/styles/common.module.scss';
 
 interface Product {
@@ -38,7 +39,9 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalMode, setModalMode] = useState<'create' | 'edit'>('create');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [deletingProduct, setDeletingProduct] = useState<Product | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -170,28 +173,49 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
     setShowModal(true);
   };
 
-  const EditButtonWithTooltip = ({ product }: { product: Product }) => {
-    const [showTooltip, setShowTooltip] = useState(false);
-    const buttonRef = useRef<HTMLButtonElement>(null);
+  const ActionButtonsWithTooltips = ({ product }: { product: Product }) => {
+    const [showEditTooltip, setShowEditTooltip] = useState(false);
+    const [showDeleteTooltip, setShowDeleteTooltip] = useState(false);
+    const editButtonRef = useRef<HTMLButtonElement>(null);
+    const deleteButtonRef = useRef<HTMLButtonElement>(null);
 
     return (
-      <div style={{ position: 'relative' }}>
+      <div className={styles.actionButtons}>
         <button
-          ref={buttonRef}
+          ref={editButtonRef}
           onClick={() => handleEditProduct(product)}
           className={styles.editButton}
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
+          onMouseEnter={() => setShowEditTooltip(true)}
+          onMouseLeave={() => setShowEditTooltip(false)}
         >
           <FiEdit3 size={16} />
         </button>
         <Overlay
-          target={buttonRef.current}
-          show={showTooltip}
+          target={editButtonRef.current}
+          show={showEditTooltip}
           placement="top"
         >
           <Tooltip id={`edit-tooltip-${product.id}`}>
             {t('editProduct')}
+          </Tooltip>
+        </Overlay>
+
+        <button
+          ref={deleteButtonRef}
+          onClick={() => handleDeleteProduct(product)}
+          className={styles.deleteButton}
+          onMouseEnter={() => setShowDeleteTooltip(true)}
+          onMouseLeave={() => setShowDeleteTooltip(false)}
+        >
+          <FiTrash2 size={16} />
+        </button>
+        <Overlay
+          target={deleteButtonRef.current}
+          show={showDeleteTooltip}
+          placement="top"
+        >
+          <Tooltip id={`delete-tooltip-${product.id}`}>
+            {t('deleteProduct')}
           </Tooltip>
         </Overlay>
       </div>
@@ -202,6 +226,39 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
     setEditingProduct(null);
     setModalMode('create');
     setShowModal(true);
+  };
+
+  const handleDeleteProduct = (product: Product) => {
+    setDeletingProduct(product);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!deletingProduct) return;
+    
+    try {
+      setSubmitting(true);
+      await pb.collection('products').delete(deletingProduct.id);
+      
+      // Refresh the products list
+      const records = await pb.collection('products').getList(1, 50, {
+        sort: '-created'
+      });
+      setProducts(records.items as unknown as Product[]);
+      
+      setShowDeleteModal(false);
+      setDeletingProduct(null);
+    } catch (error: any) {
+      console.error('Error deleting product:', error);
+      throw error;
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setDeletingProduct(null);
   };
 
   const columns = [
@@ -239,7 +296,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
       key: 'actions',
       label: t('actions'),
       render: (value: any, product: Product) => (
-        <EditButtonWithTooltip product={product} />
+        <ActionButtonsWithTooltips product={product} />
       )
     }
   ];
@@ -301,6 +358,25 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
           productId={editingProduct?.id}
         />
       </Modal>
+
+      <ConfirmationDialog
+        show={showDeleteModal}
+        onHide={cancelDelete}
+        onConfirm={confirmDelete}
+        title={t('confirmDelete')}
+        message={deletingProduct ? 
+          `${locale === 'ar' ? 'هل أنت متأكد من حذف' : 'Are you sure you want to delete'} <span class="fw-bold">${locale === 'ar' 
+            ? (deletingProduct.name_ar || deletingProduct.name_en || 'Product')
+            : (deletingProduct.name_en || deletingProduct.name_ar || 'Product')
+          }</span>${locale === 'ar' ? '؟' : '?'}` : 
+          t('deleteConfirmation', { name: 'Product' })
+        }
+        warning={t('deleteWarning')}
+        confirmText={t('confirmDelete')}
+        cancelText={t('dismiss')}
+        loading={submitting}
+        type="danger"
+      />
     </>
   );
 };
