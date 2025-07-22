@@ -11,6 +11,7 @@ import { ProductFormData } from './AddProductForm/validation';
 import { FiEdit3, FiTrash2 } from 'react-icons/fi';
 import { Overlay, Tooltip } from 'react-bootstrap';
 import ConfirmationDialog from '@/components/shared/ConfirmationDialog';
+import toast from 'react-hot-toast';
 import styles from '@/styles/common.module.scss';
 
 interface Product {
@@ -33,6 +34,7 @@ interface ProductsPageProps {
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
   const t = useTranslations('products');
+  const commonT = useTranslations('common');
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -139,10 +141,12 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
       
       if (modalMode === 'create') {
         await pb.collection('products').create(formData);
+        toast.success(commonT('toast.product_created'));
       } else {
         // Update existing product
         if (editingProduct) {
           await pb.collection('products').update(editingProduct.id, formData);
+          toast.success(commonT('toast.product_updated'));
         }
       }
       
@@ -156,6 +160,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
       setEditingProduct(null);
     } catch (error: any) {
       console.error('Error saving product:', error);
+      toast.error(commonT('toast.general_error'));
       throw error;
     } finally {
       setSubmitting(false);
@@ -240,6 +245,9 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
       setSubmitting(true);
       await pb.collection('products').delete(deletingProduct.id);
       
+      // Show success toast
+      toast.success(commonT('toast.product_deleted'));
+      
       // Refresh the products list
       const records = await pb.collection('products').getList(1, 50, {
         sort: '-created'
@@ -250,6 +258,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
       setDeletingProduct(null);
     } catch (error: any) {
       console.error('Error deleting product:', error);
+      toast.error(commonT('toast.general_error'));
       throw error;
     } finally {
       setSubmitting(false);

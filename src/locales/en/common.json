@@ -23,7 +23,10 @@
   "loading": "Loading...",
   "toast": {
     "general_error": "An error occurred. Please try again.",
-    "network_error": "Network error. Please check your internet connection."
+    "network_error": "Network error. Please check your internet connection.",
+    "product_created": "Product created successfully!",
+    "product_updated": "Product updated successfully!",
+    "product_deleted": "Product deleted successfully!"
   },
   "cookie": {
     "message": "We use cookies on our website to see how you interact with it. By accepting, you agree to our use of such cookies.",
