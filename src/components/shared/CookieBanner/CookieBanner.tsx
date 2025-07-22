@@ -33,13 +33,7 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ locale }) => {
 
   return (
     <div 
-      className={`${styles.cookieBanner} position-fixed`}
-      style={{ 
-        bottom: '20px', 
-        left: '20px', 
-        right: '20px',
-        maxWidth: 'calc(100vw - 40px)'
-      }}
+      className={`${styles.cookieBanner} ${locale === 'ar' ? styles.rtl : styles.ltr}`}
     >
       <div className={styles.cookieContent}>
         <p className={styles.cookieText}>
@@ -48,15 +42,15 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ locale }) => {
         <div className={styles.buttonContainer}>
           <Button
             onClick={handleDecline}
-            className={`btn-secondary ${styles.glassmorphismBtn} px-3 py-2`}
+            className={`${styles.glassmorphismBtn} ${styles.rejectBtn}`}
           >
             {t('cookie.decline')}
           </Button>
           <Button
             onClick={handleAccept}
-            className={`btn-primary ${styles.glassmorphismBtn} px-3 py-2`}
+            className={`${styles.glassmorphismBtn} ${styles.acceptBtn}`}
           >
-            {t('cookie.accept')}
+          {t('cookie.accept')}
           </Button>
         </div>
       </div>

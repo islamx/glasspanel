@@ -1,24 +1,33 @@
 .cookieBanner {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  z-index: 1050;
-  animation: slideUp 0.3s ease;
+  position: fixed;
   bottom: 20px;
-  left: 20px;
-  right: 20px;
-  border-radius: 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px rgba(162, 89, 230, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 1050;
+  animation: slideIn 0.4s ease;
   padding: 1.5rem;
+  margin: 0 20px;
+}
+
+.cookieBanner.ltr {
+  right: 0;
+}
+
+.cookieBanner.rtl {
+  left: 0;
 }
 
 .cookieContent {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .cookieText {
@@ -27,24 +36,27 @@
   line-height: 1.5;
   margin: 0;
   font-weight: 500;
-  flex-grow: 1;
+  text-align: center;
 }
 
 .buttonContainer {
   display: flex;
-  gap: 0.5rem;
-  flex-shrink: 0;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .glassmorphismBtn {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  padding: 0.875rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
   
   &::before {
     content: '';
@@ -59,8 +71,6 @@
   
   &:hover {
     transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     
     &::before {
       left: 100%;
@@ -71,32 +81,54 @@
     transform: translateY(0);
   }
   
-  &.btn-primary {
-    background: rgba(59, 130, 246, 0.8);
+  &.acceptBtn {
+    background: linear-gradient(135deg, #a259e6 0%, #ff5fad 100%);
     color: white;
+    border: none;
+    box-shadow: 0 4px 16px rgba(162, 89, 230, 0.3);
     
     &:hover {
-      background: rgba(59, 130, 246, 0.9);
+      background: linear-gradient(135deg, #8b4fd1 0%, #e54d9a 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(162, 89, 230, 0.4);
     }
   }
   
-  &.btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
+  &.rejectBtn {
+    background: rgba(255, 255, 255, 0.15);
     color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(162, 89, 230, 0.3);
     
     &:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(162, 89, 230, 0.1);
+      border-color: rgba(162, 89, 230, 0.5);
+      transform: translateY(-1px);
     }
   }
 }
 
-@keyframes slideUp {
+@keyframes slideIn {
   from {
-    transform: translateY(100%);
+    transform: translateX(100%);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.cookieBanner.rtl {
+  animation: slideInRtl 0.4s ease;
+}
+
+@keyframes slideInRtl {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -104,21 +136,18 @@
 // Responsive adjustments
 @media (max-width: 576px) {
   .cookieBanner {
-    left: 10px;
-    right: 10px;
+    width: calc(100% - 40px);
+    margin: 0 20px;
     bottom: 10px;
-    padding: 1rem;
+    padding: 1.25rem;
   }
   
   .cookieContent {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
+    gap: 1rem;
   }
   
   .cookieText {
     font-size: 0.8rem;
-    margin-bottom: 1rem;
   }
   
   .glassmorphismBtn {
