@@ -1,21 +1,23 @@
 .link {
-  color: #222;
+  color: #ffffff;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   text-decoration: none;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
   transition: background 0.2s, color 0.2s;
   margin-right: 8px;
   display: inline-block;
 }
 
 .link:hover {
-  color: #007bff;
-  background: rgba(0,123,255,0.08);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .active {
-  color: #007bff;
-  background: rgba(0,123,255,0.08);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
 } 

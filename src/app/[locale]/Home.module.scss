@@ -1,9 +1,10 @@
 .welcomeCard {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   padding: 3rem 2.5rem;
   text-align: center;
   box-shadow: 
@@ -31,17 +32,12 @@
 .welcomeTitle {
   font-size: 2.2rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #a259e6 0%, #ff5fad 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
 
 .welcomeSubtitle {
   font-size: 1.1rem;
-  color: #666;
   margin-bottom: 1.25rem;
   line-height: 1.5;
   font-weight: 400;
@@ -52,7 +48,6 @@
 
 .welcomeCta {
   font-size: 1rem;
-  color: #777;
   margin-bottom: 2.5rem;
   line-height: 1.5;
   font-weight: 400;

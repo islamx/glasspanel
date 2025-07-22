@@ -1,10 +1,10 @@
 .navbar {
-  background: linear-gradient(120deg, rgba(243,234,255,0.85) 0%, rgba(233,230,253,0.85) 100%);
-  box-shadow: 0 8px 32px 0 rgba(162,89,230,0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
   border-radius: 18px;
-  border: 1.5px solid rgba(255,255,255,0.18);
   padding: 0.75rem 2rem;
   margin: 20px auto;
   max-width: 1200px;
@@ -17,9 +17,9 @@
 .brand {
   font-weight: bold;
   letter-spacing: 2px;
-  color: #a259e6;
+  color: #ffffff;
   font-size: 22px;
-  text-shadow: 0 2px 8px #ff5fad22;
+  text-shadow: none;
   margin-right: 18px;
   background: none !important;
   border-radius: 0;
@@ -33,18 +33,17 @@
 .brand:focus,
 .brand.active {
   background: none !important;
-  color: #a259e6 !important;
   box-shadow: none;
   text-decoration: none;
 }
 
 .brandLink {
   background: none !important;
-  color: #a259e6 !important;
+  color: #ffffff !important;
   font-weight: bold;
   letter-spacing: 2px;
   font-size: 22px;
-  text-shadow: 0 2px 8px #ff5fad22;
+  text-shadow: none;
   margin-right: 18px;
   border-radius: 0;
   box-shadow: none;
@@ -73,25 +72,27 @@
 }
 
 .link {
-  background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  color: #ffffff;
   border-radius: 8px;
   padding: 0.5rem 1.2rem;
   transition: background 0.2s, box-shadow 0.2s, color 0.2s;
   box-shadow: 0 2px 8px rgba(162,89,230,0.08);
   text-decoration: none;
   font-weight: 500;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .link:hover, .active {
-  background: linear-gradient(90deg, #ff5fad 0%, #a259e6 100%);
-  color: #ffe066;
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   box-shadow: 0 4px 16px rgba(255,95,173,0.12);
 }
 
 .logoutBtn {
   background: none;
-  color: #a259e6;
+  color: #ffffff;
   border: none;
   padding: 0.6rem;
   border-radius: 50%;

@@ -14,7 +14,7 @@
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 0.95rem;
 }
 
@@ -26,22 +26,24 @@
   width: 100%;
   padding: 0.875rem 1rem;
   border-radius: 8px;
-  border: 1px solid #dee2e6;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-size: 16px;
   outline: none;
   resize: vertical;
   min-height: 42px;
-  background: #fff;
-  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
   transition: all 0.2s ease;
   
   &::placeholder {
-    color: #6c757d;
+    color: rgba(255, 255, 255, 0.6);
   }
   
   &:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+    background: transparent;
+    color: #fff;
   }
   
   // Textarea specific styling
@@ -55,7 +57,7 @@
     cursor: pointer;
     
     option {
-      background: #fff;
+      background: #ffffff4b;
       color: #2c3e50;
     }
   }
@@ -78,10 +80,10 @@
   display: flex;
   align-items: center;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #666;
+  color: #ffffff;
   font-size: 16px;
   border-right: none;
   border-radius: 8px 0 0 8px;
@@ -123,7 +125,6 @@
   padding-left: 40px;
 }
 .error {
-  color: #dc3545;
   font-size: 0.875rem;
   margin-top: 4px;
   width: 100%;
@@ -207,10 +208,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  color: #a259e6;
   font-size: 1.1rem;
   display: flex;
   align-items: center;
+  color: #fff;
 }
 
 // RTL icon button positioning
@@ -221,7 +222,6 @@
 
 .searchIcon {
   right: 12px;
-  color: #a259e6;
   font-size: 1.2rem;
   display: flex;
   align-items: center;

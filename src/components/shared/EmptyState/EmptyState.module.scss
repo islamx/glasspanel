@@ -1,7 +1,7 @@
 .emptyState {
   text-align: center;
   padding: 3rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.30);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 2rem 0;
@@ -11,20 +11,17 @@
     
     .icon {
       font-size: 4rem;
-      color: rgba(162, 89, 230, 0.5);
       opacity: 0.7;
     }
   }
   
   .title {
-    color: #a259e6;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
   }
   
   .description {
-    color: rgba(51, 51, 51, 0.7);
     font-size: 1rem;
     line-height: 1.5;
     max-width: 400px;

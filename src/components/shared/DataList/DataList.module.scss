@@ -13,32 +13,40 @@
 
 .searchInput {
   margin-bottom: 1.5rem;
-  
+
+  /* Glass wrapper for search input */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 1rem;
+
   .input-group {
     max-width: 400px;
     margin: 0 auto;
   }
   
   .input-group-text {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #667eea;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
   }
   
   .form-control {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #333;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
     
     &::placeholder {
-      color: rgba(51, 51, 51, 0.6);
+      color: rgba(255, 255, 255, 0.6);
     }
     
     &:focus {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #667eea;
-      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-      color: #333;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.2);
+      color: #ffffff;
     }
   }
   

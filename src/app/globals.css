@@ -1,6 +1,8 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Gradient background & white foreground for better contrast */
+  --background: #ffffff; /* fallback */
+  --background-gradient: linear-gradient(135deg, #ff5fad 0%, #a259e6 100%);
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,7 +20,8 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background-gradient) fixed no-repeat;
+  min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,6 +38,12 @@ a {
   text-decoration: none;
 }
 
+/* Ensure link hover maintains readability on the new gradient */
+a:hover,
+a:focus {
+  color: #ffffff;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -42,3 +51,16 @@ a {
 }
 
 
+.modal-content {
+  background: transparent !important;
+}
+
+.modal-title {
+  color: #ffffff !important;
+}
+
+select {
+  option {
+    color: gray;
+  }
+}

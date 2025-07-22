@@ -27,9 +27,11 @@
         padding: 0 1rem;
         border: 2px solid transparent;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        color: #6b7280;
+        background: rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
         font-weight: 500;
         font-size: 0.875rem;
         text-decoration: none;
@@ -39,10 +41,10 @@
         overflow: hidden;
         
         &:hover {
-          color: #fff;
-          border-color: transparent;
+          color: #ffffff;
+          border-color: rgba(255, 255, 255, 0.3);
           transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
           
           &::before {
             opacity: 1;
@@ -59,8 +61,8 @@
         }
         
         &.active {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: #fff;
+          background: rgba(255, 255, 255, 0.3);
+          color: #ffffff;
           border-color: transparent;
           box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
           font-weight: 600;
@@ -73,8 +75,8 @@
       }
       
       &.disabled .page-link {
-        background: rgba(156, 163, 175, 0.1);
-        color: rgba(156, 163, 175, 0.5);
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.4);
         cursor: not-allowed;
         border-color: transparent;
         
@@ -106,14 +108,14 @@
       
       // Ellipsis styling
       .page-link:not(.active):not(:hover) {
-        background: transparent;
-        border: 2px solid rgba(156, 163, 175, 0.2);
-        color: #6b7280;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
         
         &:hover {
-          background: rgba(255, 255, 255, 0.9);
-          border-color: rgba(102, 126, 234, 0.3);
-          color: #667eea;
+          background: rgba(255, 255, 255, 0.22);
+          border-color: rgba(255, 255, 255, 0.3);
+          color: #ffffff;
         }
       }
     }
@@ -121,13 +123,14 @@
   
   // Page info styling
   .text-muted {
-    color: #6b7280;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.875rem;
     font-weight: 500;
     text-align: center;
     padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     border-radius: 8px;
     border: 1px solid rgba(156, 163, 175, 0.1);
   }

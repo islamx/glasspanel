@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Modal from 'react-bootstrap/Modal';
 import { FiImage } from 'react-icons/fi';
 import styles from './ProductImage.module.scss';
+import commonStyle from '../../../../styles/common.module.scss';
 
 interface ProductImageProps {
   imageUrl?: string;
@@ -77,6 +78,7 @@ const ProductImage: React.FC<ProductImageProps> = ({
         onHide={handleModalClose}
         size="lg"
         centered
+        className={commonStyle.glassStyle}
       >
         <Modal.Header closeButton>
           <Modal.Title>{selectedImage?.alt}</Modal.Title>

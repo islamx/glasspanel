@@ -31,7 +31,6 @@
 }
 
 .cookieText {
-  color: rgba(0, 0, 0, 0.8);
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
@@ -96,8 +95,8 @@
   
   &.rejectBtn {
     background: rgba(255, 255, 255, 0.15);
-    color: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(162, 89, 230, 0.3);
+    color: #ffffff;
     
     &:hover {
       background: rgba(162, 89, 230, 0.1);

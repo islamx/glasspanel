@@ -1,18 +1,59 @@
 @import 'bootstrap/scss/bootstrap';
 
+/* -------------------------------------------
+   Root variables & global styles
+--------------------------------------------*/
+
+:root {
+  /* Fallback solid colour */
+  --background: #ffffff;
+  /* Vibrant gradient background used across the app */
+  --background-gradient: linear-gradient(135deg, #ff5fad 0%, #a259e6 100%);
+  /* Foreground / text colour */
+  --foreground: #ffffff;
+}
+
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+body {
+  background: var(--background-gradient) fixed no-repeat;
+  background-image: url('../../public/background2.jpg');
+  background-size: cover;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure links remain readable on coloured backgrounds */
+a {
+  color: var(--foreground);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  opacity: 0.85;
+}
+
 // Global overrides for React Bootstrap pagination
 .pagination {
   gap: 0.5rem !important;
   
   .page-item {
     .page-link {
-      background: linear-gradient(120deg, rgba(243,234,255,0.85) 0%, rgba(233,230,253,0.85) 100%) !important;
+      background: #ffffff3d;
       box-shadow: 0 8px 32px 0 rgba(162,89,230,0.12) !important;
       backdrop-filter: blur(16px) !important;
       -webkit-backdrop-filter: blur(16px) !important;
       border-radius: 18px !important;
       border: 1.5px solid rgba(255,255,255,0.18) !important;
-      color: #a259e6 !important;
+      color: #fff !important;
       padding: 0.75rem 1.2rem !important;
       font-weight: 500 !important;
       transition: all 0.2s ease !important;
@@ -75,7 +116,6 @@
     &.disabled .page-link {
       background: rgba(255, 255, 255, 0.05) !important;
       border-color: rgba(255, 255, 255, 0.1) !important;
-      color: rgba(162, 89, 230, 0.4) !important;
       cursor: not-allowed !important;
       opacity: 0.6 !important;
       box-shadow: none !important;
@@ -83,7 +123,6 @@
       &:hover {
         background: rgba(255, 255, 255, 0.05) !important;
         border-color: rgba(255, 255, 255, 0.1) !important;
-        color: rgba(162, 89, 230, 0.4) !important;
         transform: none !important;
         box-shadow: none !important;
       }
@@ -120,6 +159,29 @@
 [dir="ltr"] div[data-sonner-toaster] {
   right: 20px !important;
   left: auto !important;
+}
+
+/* -------------------------------------------
+   Bootstrap table glass override
+--------------------------------------------*/
+.table,
+.table thead,
+.table thead tr,
+.table tbody,
+.table tbody tr,
+.table-light {
+  background: transparent !important;
+}
+
+.table thead th,
+.table tbody td {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background: transparent;
+}
+
+.table-hover > tbody > tr:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 
