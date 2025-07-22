@@ -12,16 +12,16 @@
 }
 
 .cancelButton {
-  background: rgba(255, 255, 255, 0.15);
-  color: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(162, 89, 230, 0.3);
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15 ) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(162, 89, 230, 0.3) !important;
+  border-radius: 8px  !important;
+  padding: 0.75rem 1.5rem  !important;
   font-weight: 500;
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(162, 89, 230, 0.1);
+    background: rgba(162, 89, 230, 0.1) !important;
     border-color: rgba(162, 89, 230, 0.5);
     transform: translateY(-1px);
   }
@@ -35,10 +35,10 @@
 
 .submitButton {
   background: linear-gradient(135deg, #a259e6 0%, #ff5fad 100%);
-  color: white;
+  color: white  !important;
   border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 8px  !important;
+  padding: 0.75rem 1.5rem  !important;
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 4px 16px rgba(162, 89, 230, 0.3);
