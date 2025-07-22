@@ -16,6 +16,12 @@ function getBestLocale(request: NextRequest): string {
   return bestMatch || defaultLocale
 }
 
+// Get stored language preference from cookies
+function getStoredLocale(request: NextRequest): string | null {
+  const cookie = request.cookies.get('preferred-locale')
+  return cookie?.value && locales.includes(cookie.value) ? cookie.value : null
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -30,8 +36,23 @@ export function middleware(request: NextRequest) {
   )
 
   if (pathnameIsMissingLocale) {
-    const locale = getBestLocale(request)
-    return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url))
+    // First check for stored preference, then fall back to browser language
+    const storedLocale = getStoredLocale(request)
+    const locale = storedLocale || getBestLocale(request)
+    
+    const response = NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url))
+    
+    // Set the cookie if it doesn't exist (for first-time visitors)
+    if (!storedLocale) {
+      response.cookies.set('preferred-locale', locale, {
+        maxAge: 60 * 60 * 24 * 365, // 1 year
+        path: '/',
+        httpOnly: false, // Allow client-side access
+        sameSite: 'lax'
+      })
+    }
+    
+    return response
   }
 
   return NextResponse.next()
