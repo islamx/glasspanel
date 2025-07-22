@@ -119,13 +119,14 @@
   .navbar {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem;
+    padding: 1rem;
+    gap: 10px;
   }
   .leftLinks, .rightLinks {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    gap: 0;
+    gap: 10px;
     margin-bottom: 8px;
   }
 } 
