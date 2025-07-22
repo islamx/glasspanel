@@ -53,6 +53,7 @@ a:focus {
 
 .modal-content {
   background: transparent !important;
+  backdrop-filter: blur(30px) !important;
 }
 
 .modal-title {
