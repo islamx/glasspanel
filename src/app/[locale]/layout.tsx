@@ -19,6 +19,41 @@ const cairo = Cairo({
   display: 'swap',
 })
 
+export const metadata = {
+  title: {
+    default: 'GlassPanel | لوحة التحكم',
+    en: 'GlassPanel | Dashboard',
+    ar: 'GlassPanel | لوحة التحكم',
+  },
+  description: {
+    default: 'لوحة تحكم زجاجية حديثة تدعم العربية والإنجليزية.',
+    en: 'Modern glass dashboard supporting Arabic and English.',
+    ar: 'لوحة تحكم زجاجية حديثة تدعم العربية والإنجليزية.',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  openGraph: {
+    title: 'GlassPanel',
+    description: 'Modern glass dashboard supporting Arabic and English.',
+    images: ['/vercel.svg'],
+    locale: 'ar',
+    type: 'website',
+  },
+  themeColor: '#a259e6',
+  author: 'Islam Abdelzaher Frontend developer, Founder @ Islamz.me',
+  creator: 'Islam Abdelzaher',
+  contact: {
+    email: 'Islam.abdelzaher@gmail.com',
+    phone: '01062560203',
+    website: 'https://islamz.me',
+    linkedin: 'https://www.linkedin.com/in/islamabdelzaher/',
+    github: 'https://github.com/islamx',
+  },
+};
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
