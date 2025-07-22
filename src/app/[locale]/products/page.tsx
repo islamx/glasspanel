@@ -3,7 +3,7 @@ import { useProtectedRoute } from "@/lib/useProtectedRoute";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import ProductsPage from "@/components/pages/products/ProductsPage";
-import styles from "./Products.module.scss";
+import styles from "@/styles/common.module.scss";
 
 export default function ProductsPageWrapper() {
   const { user } = useProtectedRoute();

@@ -1,5 +1,6 @@
 "use client";
-import styles from "./Home.module.scss";
+import commonStyles from "@/styles/common.module.scss";
+import homeStyles from "./Home.module.scss";
 import { useTranslations } from "next-intl";
 import { useProtectedRoute } from "@/lib/useProtectedRoute";
 
@@ -12,8 +13,13 @@ export default function HomePage() {
   const displayName = user.name || user.username || user.email;
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.welcome}>{t('dashboard.welcome', { name: displayName })}</h1>
+    <div className={commonStyles.container}>
+      <h1 className={commonStyles.title}>
+        {t('nav.dashboard')}
+      </h1>
+      <p className={`${homeStyles.welcome} text-muted`}>
+        {t('dashboard.welcome', { name: displayName })}
+      </p>
     </div>
   );
 }

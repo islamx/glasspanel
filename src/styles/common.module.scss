@@ -1,5 +1,4 @@
 .container {
-  text-align: center;
   margin: 20px auto 40px auto;
   padding: 0 1rem;
   max-width: 1200px;
@@ -44,6 +43,19 @@
   color: #667eea;
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+// Additional helper classes for better typography
+.textMuted {
+  color: #64748b;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.mt3 {
+  margin-top: 1rem;
 }
 
 // Responsive design
