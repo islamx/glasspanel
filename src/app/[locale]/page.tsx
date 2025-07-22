@@ -1,14 +1,19 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
+"use client";
+import styles from "./Home.module.scss";
+import { useTranslations } from "next-intl";
+import { useProtectedRoute } from "@/lib/useProtectedRoute";
 
 export default function HomePage() {
-  const t = useTranslations('common')
+  const { user } = useProtectedRoute();
+  const t = useTranslations('common');
+
+  if (!user) return null;
+
+  const displayName = user.name || user.username || user.email;
 
   return (
-    <div className="container mt-5">
-      <h1>{t('home.title')}</h1>
-      <p>{t('home.welcome')}</p>
+    <div className={styles.container}>
+      <h1 className={styles.welcome}>{t('dashboard.welcome', { name: displayName })}</h1>
     </div>
-  )
+  );
 }

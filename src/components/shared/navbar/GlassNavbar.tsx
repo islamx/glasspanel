@@ -27,7 +27,7 @@ const GlassNavbar: React.FC<GlassNavbarProps> = ({ locale }) => {
     <nav className={styles.navbar}>
       <div className={styles.leftLinks}>
         <NavLink href={`/${locale}/`} className={styles.brand}>GlassPanel</NavLink>
-        <NavLink href={`/${locale}/dashboard`}>{t('nav.dashboard')}</NavLink>
+        <NavLink href={`/${locale}`}>{t('nav.dashboard')}</NavLink>
         <NavLink href={`/${locale}/products`}>{t('nav.products')}</NavLink>
       </div>
       <div className={styles.rightLinks}>

@@ -22,10 +22,10 @@ export default function LoginPage() {
   };
 
   useEffect(() => {
-    // If user is already logged in, redirect to dashboard
+    // If user is already logged in, redirect to home
     if (!loading && isLoggedIn) {
       const currentLocale = getCurrentLocale();
-      router.push(`/${currentLocale}/dashboard`);
+      router.push(`/${currentLocale}`);
     }
   }, [isLoggedIn, loading, router, locale]);
 

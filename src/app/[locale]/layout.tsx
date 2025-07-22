@@ -22,14 +22,14 @@ const cairo = Cairo({
 
 export const metadata = {
   title: {
-    default: 'GlassPanel | لوحة التحكم',
-    en: 'GlassPanel | Dashboard',
-    ar: 'GlassPanel | لوحة التحكم',
+    default: 'GlassPanel | الرئيسية',
+    en: 'GlassPanel | Home',
+    ar: 'GlassPanel | الرئيسية',
   },
   description: {
-    default: 'لوحة تحكم زجاجية حديثة تدعم العربية والإنجليزية.',
-    en: 'Modern glass dashboard supporting Arabic and English.',
-    ar: 'لوحة تحكم زجاجية حديثة تدعم العربية والإنجليزية.',
+    default: 'تطبيق زجاجي حديث يدعم العربية والإنجليزية.',
+    en: 'Modern glass application supporting Arabic and English.',
+    ar: 'تطبيق زجاجي حديث يدعم العربية والإنجليزية.',
   },
   icons: {
     icon: '/favicon.ico',
@@ -38,7 +38,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'GlassPanel',
-    description: 'Modern glass dashboard supporting Arabic and English.',
+    description: 'Modern glass application supporting Arabic and English.',
     images: ['/vercel.svg'],
     locale: 'ar',
     type: 'website',
