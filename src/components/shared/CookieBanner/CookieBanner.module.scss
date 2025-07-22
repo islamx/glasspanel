@@ -1,0 +1,128 @@
+.cookieBanner {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1050;
+  animation: slideUp 0.3s ease;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.cookieContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cookieText {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.glassmorphismBtn {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &.btn-primary {
+    background: rgba(59, 130, 246, 0.8);
+    color: white;
+    
+    &:hover {
+      background: rgba(59, 130, 246, 0.9);
+    }
+  }
+  
+  &.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(0, 0, 0, 0.8);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .cookieBanner {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 1rem;
+  }
+  
+  .cookieContent {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .cookieText {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .glassmorphismBtn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}

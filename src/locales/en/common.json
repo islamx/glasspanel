@@ -21,5 +21,10 @@
   "toast": {
     "general_error": "An error occurred. Please try again.",
     "network_error": "Network error. Please check your internet connection."
+  },
+  "cookie": {
+    "message": "We use cookies to enhance your experience. By continuing to use this site, you agree to our use of cookies.",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }
