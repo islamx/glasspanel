@@ -12,7 +12,10 @@
     "welcome": "Welcome to Glasspanel!"
   },
   "dashboard": {
-    "welcome": "Welcome {name}, you are now logged in."
+    "welcome": "Welcome back, {name}! 🎉",
+    "subtitle": "We're currently working on this page to make it even better for you.",
+    "cta": "In the meantime, explore our products and discover amazing features!",
+    "productsButton": "Explore Products"
   },
   "email": "Email",
   "password": "Password",
