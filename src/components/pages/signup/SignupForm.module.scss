@@ -33,20 +33,20 @@
 
 .button {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem !important;
   border-radius: 8px;
   border: none;
   background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%);
-  color: #fff;
+  color: #fff !important;
   font-weight: 600;
   font-size: 18px;
   margin-top: 24px;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(162,89,230,0.08);
-  transition: all 0.2s ease;
+  transition: all 0.2s ease  !important;
 
   &:hover {
-    transform: translateY(-1px);
+    transform: translateY(-1px) !important;
     box-shadow: 0 4px 12px rgba(162,89,230,0.15);
   }
 
