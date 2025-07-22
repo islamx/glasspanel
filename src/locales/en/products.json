@@ -1,0 +1,23 @@
+{
+  "name": "Name",
+  "description": "Description",
+  "price": "Price",
+  "category": "Category",
+  "created": "Created",
+  "image": "Image",
+  "searchPlaceholder": "Search products by name...",
+  "previous": "Previous",
+  "next": "Next",
+  "showing": "Showing",
+  "of": "of",
+  "products": "products",
+  "loading": "Loading products...",
+  "noData": {
+    "title": "No Products Found",
+    "description": "There are no products available at the moment."
+  },
+  "noSearchResults": {
+    "title": "No Search Results",
+    "description": "No products match your search criteria."
+  }
+} 

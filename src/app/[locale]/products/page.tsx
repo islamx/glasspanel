@@ -1,18 +1,22 @@
 "use client";
 import { useProtectedRoute } from "@/lib/useProtectedRoute";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
+import ProductsPage from "@/components/pages/products/ProductsPage";
 import styles from "./Products.module.scss";
 
-export default function ProductsPage() {
+export default function ProductsPageWrapper() {
   const { user } = useProtectedRoute();
   const t = useTranslations('common');
+  const params = useParams();
+  const locale = params.locale as string;
 
   if (!user) return <div className={styles.loading}>Loading...</div>;
 
   return (
     <div className={styles.container}>
-      <h1>{t('nav.products')}</h1>
-      <p>{t('products.placeholder')}</p>
+      <h1 className={styles.title}>{t('nav.products')}</h1>
+      <ProductsPage locale={locale} />
     </div>
   );
 } 

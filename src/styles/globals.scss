@@ -1,5 +1,99 @@
 @import 'bootstrap/scss/bootstrap';
 
+// Global overrides for React Bootstrap pagination
+.pagination {
+  gap: 0.5rem !important;
+  
+  .page-item {
+    .page-link {
+      background: linear-gradient(120deg, rgba(243,234,255,0.85) 0%, rgba(233,230,253,0.85) 100%) !important;
+      box-shadow: 0 8px 32px 0 rgba(162,89,230,0.12) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-radius: 18px !important;
+      border: 1.5px solid rgba(255,255,255,0.18) !important;
+      color: #a259e6 !important;
+      padding: 0.75rem 1.2rem !important;
+      font-weight: 500 !important;
+      transition: all 0.2s ease !important;
+      position: relative !important;
+      min-width: 48px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+      
+      &:hover {
+        background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%) !important;
+        color: #fff !important;
+        box-shadow: 0 4px 16px rgba(255,95,173,0.12) !important;
+        transform: translateY(-1px) !important;
+        border-color: rgba(255,255,255,0.3) !important;
+      }
+      
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(162, 89, 230, 0.25) !important;
+        outline: none !important;
+      }
+      
+      &:active {
+        transform: translateY(0) !important;
+      }
+      
+      &.active {
+        background: linear-gradient(90deg, #ff5fad 0%, #a259e6 100%) !important;
+        border-color: rgba(255,255,255,0.3) !important;
+        color: #ffe066 !important;
+        box-shadow: 0 4px 16px rgba(255,95,173,0.12) !important;
+        font-weight: 600 !important;
+        
+        &:hover {
+          background: linear-gradient(90deg, #a259e6 0%, #ff5fad 100%) !important;
+          color: #ffe066 !important;
+          transform: translateY(-1px) !important;
+          box-shadow: 0 6px 20px rgba(255,95,173,0.15) !important;
+        }
+      }
+    }
+    
+    &.disabled .page-link {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: rgba(162, 89, 230, 0.4) !important;
+      cursor: not-allowed !important;
+      opacity: 0.6 !important;
+      box-shadow: none !important;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+        color: rgba(162, 89, 230, 0.4) !important;
+        transform: none !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+// RTL Support for Bootstrap Modal Close Button
+[dir="rtl"] {
+  .modal-header {
+    .btn-close {
+      margin: 0;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    
+    .modal-title {
+      text-align: right;
+    }
+  }
+  
+  .modal-body {
+    text-align: right;
+  }
+}
+
 // Toast positioning for RTL
 [dir="rtl"] div[data-sonner-toaster] {
   left: 20px !important;

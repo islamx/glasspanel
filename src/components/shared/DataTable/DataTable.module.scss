@@ -1,0 +1,68 @@
+.tableContainer {
+  margin-bottom: 1.5rem;
+  
+  .table {
+    margin-bottom: 0;
+    
+    thead {
+      th {
+        background: rgba(102, 126, 234, 0.1);
+        border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+        color: #667eea;
+        font-weight: 600;
+        padding: 1rem 0.75rem;
+      }
+    }
+    
+    tbody {
+      tr {
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: rgba(102, 126, 234, 0.05);
+          transform: translateY(-1px);
+        }
+        
+        td {
+          padding: 1rem 0.75rem;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          color: #333;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  
+  // Responsive table
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+    
+    .table {
+      thead th {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+      }
+      
+      tbody td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 0.75rem;
+    
+    .table {
+      thead th {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+      }
+      
+      tbody td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+} 

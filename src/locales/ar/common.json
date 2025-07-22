@@ -14,9 +14,6 @@
   "dashboard": {
     "welcome": "مرحبًا {name}، لقد سجلت الدخول بنجاح."
   },
-  "products": {
-    "placeholder": "صفحة المنتجات (تجريبية)"
-  },
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
   "remember": "تذكرني",

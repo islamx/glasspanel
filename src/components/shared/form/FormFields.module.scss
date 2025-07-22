@@ -1,5 +1,8 @@
 .inputGroup {
   margin-bottom: 18px;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
 }
 .label {
   display: block;
@@ -30,6 +33,48 @@
 [dir="rtl"] .input::placeholder {
   text-align: right;
 }
+
+
+
+.inputGroupText {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #666;
+  font-size: 16px;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  order: 1;
+}
+
+.formControl {
+  flex: 1;
+  border-left: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0 8px 8px 0;
+  order: 2;
+}
+
+// Enhanced RTL support for input groups
+[dir="rtl"] .inputGroup {
+  .inputGroupText {
+    border-left: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0 8px 8px 0;
+    order: 2;
+  }
+  
+  .formControl {
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px 0 0 8px;
+    order: 1;
+  }
+}
+
 .inputWithIcon {
   padding-right: 40px;
 }
@@ -134,6 +179,62 @@
 [dir="rtl"] .iconButton {
   right: auto;
   left: 10px;
+}
+
+.searchIcon {
+  right: 12px;
+  color: #a259e6;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.inputWithIcon:focus + .searchIcon {
+  opacity: 1;
+}
+
+// Responsive search input
+@media (max-width: 768px) {
+  .searchIcon {
+    right: 10px;
+    font-size: 1.1rem;
+  }
+  
+  [dir="rtl"] .searchIcon {
+    left: 10px;
+  }
+  
+  .inputWithIcon {
+    font-size: 16px; // Prevents zoom on iOS
+  }
+}
+
+@media (max-width: 480px) {
+  .searchIcon {
+    right: 8px;
+    font-size: 1rem;
+  }
+  
+  [dir="rtl"] .searchIcon {
+    left: 8px;
+  }
+  
+  .inputWithIcon {
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+  }
+  
+  [dir="rtl"] .inputWithIcon {
+    padding: 0.5rem 0.75rem 0.5rem 2rem;
+  }
+}
+
+// RTL search icon positioning
+[dir="rtl"] .searchIcon {
+  right: auto;
+  left: 12px;
 }
 
 .radioGroup {

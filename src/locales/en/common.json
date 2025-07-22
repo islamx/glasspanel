@@ -14,9 +14,6 @@
   "dashboard": {
     "welcome": "Welcome {name}, you are now logged in."
   },
-  "products": {
-    "placeholder": "Products page placeholder"
-  },
   "email": "Email",
   "password": "Password",
   "remember": "Remember me",

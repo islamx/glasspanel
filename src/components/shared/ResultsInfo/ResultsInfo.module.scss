@@ -1,0 +1,28 @@
+.resultsInfo {
+  text-align: center;
+  padding: 0.5rem;
+  
+  .resultsText {
+    color: rgba(162, 89, 230, 0.7);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  // Responsive design
+  @media (max-width: 768px) {
+    margin-top: 0.75rem;
+    
+    .resultsText {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    
+    .resultsText {
+      font-size: 0.75rem;
+    }
+  }
+} 
