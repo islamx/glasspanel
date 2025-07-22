@@ -1,0 +1,70 @@
+.form {
+  padding: 1rem 0;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(162, 89, 230, 0.1);
+}
+
+.cancelButton {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(162, 89, 230, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(162, 89, 230, 0.1);
+    border-color: rgba(162, 89, 230, 0.5);
+    transform: translateY(-1px);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #a259e6 0%, #ff5fad 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(162, 89, 230, 0.3);
+  
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #8b4fd1 0%, #e54d9a 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(162, 89, 230, 0.4);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .formActions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cancelButton,
+  .submitButton {
+    width: 100%;
+    justify-content: center;
+  }
+} 

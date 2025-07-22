@@ -163,4 +163,29 @@
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
     border-color: rgba(255, 255, 255, 0.3);
   }
+}
+
+.editButton {
+  background: rgba(162, 89, 230, 0.1);
+  color: #a259e6;
+  border: 1px solid rgba(162, 89, 230, 0.3);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background: rgba(162, 89, 230, 0.2);
+    border-color: rgba(162, 89, 230, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(162, 89, 230, 0.2);
+  }
+  
+  &:focus {
+    outline: 2px solid rgba(162, 89, 230, 0.3);
+    outline-offset: 2px;
+  }
 } 
