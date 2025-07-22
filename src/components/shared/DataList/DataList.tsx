@@ -5,7 +5,7 @@ import SearchInput from '../form/SearchInput';
 import DataTable from '../DataTable/DataTable';
 import Pagination from '../Pagination/Pagination';
 import ResultsInfo from '../ResultsInfo/ResultsInfo';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import Loader from '../Loader/Loader';
 import EmptyState from '../EmptyState/EmptyState';
 import styles from './DataList.module.scss';
 
@@ -90,7 +90,7 @@ const DataList: React.FC<DataListProps> = ({
 
   // Handle loading state
   if (loading) {
-    return <LoadingSpinner text={loadingText} />;
+    return <Loader />;
   }
 
   // Case 1: No products available at all

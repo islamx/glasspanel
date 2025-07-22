@@ -231,7 +231,6 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ locale }) => {
         searchPlaceholder={t('searchPlaceholder')}
         itemsPerPage={5}
         loading={loading}
-        loadingText={t('loading')}
         previousText={t('previous')}
         nextText={t('next')}
         showingText={t('showing')}
